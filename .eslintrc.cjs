@@ -1,0 +1,43 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:testing-library/react', // Agrega esta línea
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'testing-library/render-result-naming-convention': ['error', 'always', { 
+      'select-.*': '^getBy',
+      'selectall-.*': '^getAllBy',
+      'selectby-.*': '^getBy',
+      'selectbyid': '^getBy',
+      'selectbylabel': '^getByLabelText',
+      'selectbyplaceholder': '^getByPlaceholderText',
+      'selectbyrole': '^getByRole',
+      'selectbyselectortext': '^getByText',
+      'selectfirst-.*': '^getFirstBy',
+      'selectfirstby-.*': '^getFirstBy',
+      'selectfirstbyid': '^getFirstBy',
+      'selectfirstbylabel': '^getFirstByLabelText',
+      'selectfirstbyplaceholder': '^getFirstByPlaceholderText',
+      'selectfirstbyrole': '^getFirstByRole',
+      'selectfirstbyselectortext': '^getFirstByText',
+      'selectlast-.*': '^getLastBy',
+      'selectlastby-.*': '^getLastBy',
+      'selectlastbyid': '^getLastBy',
+      'selectlastbylabel': '^getLastByLabelText',
+      'selectlastbyplaceholder': '^getLastByPlaceholderText',
+      'selectlastbyrole': '^getLastByRole',
+      'selectlastbyselectortext': '^getLastByText',
+    }],
+  },
+};
