@@ -42,7 +42,7 @@ const CrearUsuario: React.FC = () => {
           <input type="text" value={trabajo} onChange={(e) => setTrabajo(e.target.value)} />
         </label>
         <br />
-        <button type="button" onClick={handleCrearUsuario}>
+        <button data-testid="crear-usuario-boton" onClick={handleCrearUsuario}>
           Crear Usuario
         </button>
       </form>

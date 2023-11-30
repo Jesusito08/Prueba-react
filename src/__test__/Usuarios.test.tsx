@@ -17,7 +17,12 @@ jest.mock('../services/api');
 
 describe('Usuarios Component', () => {
   const mockUsuarios: Usuario[] = [
-    // ... USUARIOS MOCKEADOS ...
+    {
+      id: 1,
+      email: 'test@example.com',
+      avatar: 'avatar.jpg'
+    },
+    // ... otros usuarios mockeados ...
   ];
 
   beforeEach(() => {
@@ -46,6 +51,23 @@ describe('Usuarios Component', () => {
 
     await waitFor(() => {
       expect(queryClient.getQueryData('usuarios')).toEqual(mockUsuarios);
+    });
+  });
+
+  test('renders user data', async () => {
+    (useQuery as jest.Mock).mockReturnValue({
+      data: mockUsuarios,
+      isLoading: false,
+      isError: false,
+    });
+
+    const queryClient = new QueryClient();
+    queryClient.setQueryData('usuarios', mockUsuarios);
+
+    renderWithQueryClient(queryClient);
+
+    await waitFor(() => {
+      expect(screen.getByText(mockUsuarios[0].email)).toBeInTheDocument();
     });
   });
 

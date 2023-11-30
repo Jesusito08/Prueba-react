@@ -27,12 +27,14 @@ const Login: React.FC = () => {
       localStorage.setItem('token', response.data.token);
 
     } catch (error) {
+      console.log('Error caught:', error);
       if (axios.isAxiosError(error)) {
-        const errorData: ErrorResponse = error.response?.data || { error: 'Error desconocido' };
+        const errorData: ErrorResponse = error.response?.data || { error: 'Missing password' };
         setError(errorData.error);
       } else {
-        setError('Error desconocido');
+        setError('Missing password');
       }
+      console.log('Error caught:', error);
     }
   };
 
