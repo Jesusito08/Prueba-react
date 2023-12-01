@@ -22,7 +22,6 @@ describe('Usuarios Component', () => {
       email: 'test@example.com',
       avatar: 'avatar.jpg'
     },
-    // ... otros usuarios mockeados ...
   ];
 
   beforeEach(() => {

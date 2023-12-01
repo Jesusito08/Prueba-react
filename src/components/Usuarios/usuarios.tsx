@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { useQuery, UseQueryResult } from 'react-query';
 import { obtenerUsuarios, Usuario } from '../../services/api';
+import { UsuariosContainer, Table } from './StyledUsuarios';
 
 const Usuarios: React.FC = () => {
   const { data: usuarios, isLoading, isError }: UseQueryResult<Usuario[]> = useQuery('usuarios', obtenerUsuarios);
@@ -9,17 +9,17 @@ const Usuarios: React.FC = () => {
   console.log('Usuarios:', usuarios);
 
   return (
-    <div>
-      <h1>Usuarios</h1>
+    <UsuariosContainer>
+      <h1>USUARIOS</h1>
       {isLoading && <p>Cargando...</p>}
       {isError && <p>Error al cargar los usuarios.</p>}
       {usuarios && (
-        <table>
+        <Table>
           <thead>
             <tr>
               <th>ID</th>
               <th>Correo</th>
-              <th>Imagen</th>
+              <th>Avatar</th>
             </tr>
           </thead>
           <tbody>
@@ -33,9 +33,9 @@ const Usuarios: React.FC = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
-    </div>
+    </UsuariosContainer>
   );
 };
 

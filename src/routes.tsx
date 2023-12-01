@@ -1,4 +1,3 @@
-// routes.tsx
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import CrearUsuario from './components/Crear/CrearUsuario';
@@ -12,7 +11,6 @@ const AppRoutes: React.FC = () => {
         <Route path="/usuarios" element={<Usuarios />} />
         <Route path="/crear" element={<CrearUsuario />} />
         <Route path="/login" element={<Login />} />
-        {/* OTRAS RUTICAS X SI LAS MOSCAS */}
       </Routes>
     </Router>
   );

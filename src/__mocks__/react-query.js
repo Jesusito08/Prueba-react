@@ -1,4 +1,3 @@
-// En el archivo src/__mocks__/react-query.js
 import { render} from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 

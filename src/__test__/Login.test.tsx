@@ -8,11 +8,11 @@ jest.mock('axios');
 test('renders login form and shows error message when login fails', async () => {
   const { getByLabelText, getByRole, findByText } = render(<Login />);
   
-  const emailInput = getByLabelText(/Email:/i) as HTMLInputElement;
-  const passwordInput = getByLabelText(/Password:/i) as HTMLInputElement;
-  const loginButton = getByRole('button', { name: /login/i });
+  const emailInput = getByLabelText(/Correo Electronico:/i) as HTMLInputElement;
+  const passwordInput = getByLabelText(/Contraseña:/i) as HTMLInputElement;
+  const loginButton = getByRole('button', { name: /INICIAR SESION/i });
 
-  // Simulate a successful login response
+  // SIMULACION DE LOGUEO
   (axios.post as jest.Mock).mockResolvedValueOnce({
     data: { token: 'QpwL5tke4Pnpja7X4' },
   });
@@ -27,7 +27,7 @@ test('renders login form and shows error message when login fails', async () => 
   expect(passwordInput.value).toBe('cityslicka');
   expect(axios.post).toHaveBeenCalledWith('https://reqres.in/api/login', { email: 'eve.holt@reqres.in', password: 'cityslicka' });
 
-  // Simulate a failed login response
+  // SIMULACION DE LOGEO FALLIDO
   (axios.post as jest.Mock).mockRejectedValueOnce({
     isAxiosError: true,
     response: {
@@ -46,7 +46,7 @@ test('renders login form and shows error message when login fails', async () => 
   expect(passwordInput.value).toBe('');
   expect(axios.post).toHaveBeenCalledWith('https://reqres.in/api/login', { email: 'peter@klaven', password: '' });
 
-  // Check that the error message is displayed
+  
   const errorMessage = await findByText(/Missing password/i);
   expect(errorMessage).toBeInTheDocument();
 });

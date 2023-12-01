@@ -16,7 +16,7 @@ describe('CrearUsuario', () => {
 
     await waitFor(() => expect(crearUsuario).toHaveBeenCalledWith({ name: 'John Doe', job: 'Developer' }));
 
-    // Aquí puedes verificar que se muestra el mensaje de éxito
+    
   });
 
   it('muestra un error si la creación del usuario falla', async () => {
@@ -30,6 +30,6 @@ describe('CrearUsuario', () => {
 
     await waitFor(() => expect(crearUsuario).toHaveBeenCalledWith({ name: 'John Doe', job: 'Developer' }));
 
-    // Aquí puedes verificar que se muestra el mensaje de error
+    
   });
 });

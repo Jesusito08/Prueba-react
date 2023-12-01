@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.47% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/21</span>
+                <span class='fraction'>18/20</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.47% </span>
+                <span class="strong">90% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>19/21</span>
+                <span class='fraction'>18/20</span>
             </div>
         
             
@@ -124,13 +124,9 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -156,14 +152,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,15 +169,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -190,10 +182,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
-import axios from 'axios'; 
-&nbsp;
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
+import { Container, StyledLogin } from './StyledLogin';
+import axios from 'axios';
 interface LoginResponse {
   token: string;
 }
@@ -201,7 +195,6 @@ interface LoginResponse {
 interface ErrorResponse {
   error: string;
 }
-&nbsp;
 const Login: React.FC = () =&gt; {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -220,49 +213,47 @@ const Login: React.FC = () =&gt; {
       localStorage.setItem('token', response.data.token);
 &nbsp;
     } catch (error) {
-      console.log('Error caught:', error);
       <span class="missing-if-branch" title="if path not taken" >I</span>if (axios.isAxiosError(error)) {
         const errorData: ErrorResponse = <span class="cstat-no" title="statement not covered" >error.response?.data || { error: 'Missing password' };</span>
 <span class="cstat-no" title="statement not covered" >        setError(errorData.error);</span>
       } else {
         setError('Missing password');
       }
-      console.log('Error caught:', error);
     }
   };
 &nbsp;
+&nbsp;
   return (
-    &lt;div&gt;
-      &lt;h1&gt;Login&lt;/h1&gt;
-      {error &amp;&amp; &lt;p style={{ color: 'red' }}&gt;{error}&lt;/p&gt;}
-      &lt;form&gt;
-        &lt;label&gt;
-          Email:
-          &lt;input type="text" value={email} onChange={(e) =&gt; setEmail(e.target.value)} /&gt;
-        &lt;/label&gt;
-        &lt;br /&gt;
-        &lt;label&gt;
-          Password:
-          &lt;input type="password" value={password} onChange={(e) =&gt; setPassword(e.target.value)} /&gt;
-        &lt;/label&gt;
-        &lt;br /&gt;
-        &lt;button type="button" onClick={handleLogin}&gt;
-          Login
-        &lt;/button&gt;
-      &lt;/form&gt;
-    &lt;/div&gt;
+    &lt;Container&gt;
+      &lt;StyledLogin&gt;
+        &lt;h1&gt;INICIO DE SESION&lt;/h1&gt;
+        {error &amp;&amp; &lt;p style={{ color: 'red' }}&gt;{error}&lt;/p&gt;}
+        &lt;form&gt;
+          &lt;label&gt;
+            Correo Electronico:
+            &lt;input type="text" value={email} onChange={(e) =&gt; setEmail(e.target.value)} /&gt;
+          &lt;/label&gt;
+          &lt;label&gt;
+            Contraseña:
+            &lt;input type="password" value={password} onChange={(e) =&gt; setPassword(e.target.value)} /&gt;
+          &lt;/label&gt;
+          &lt;button type="button" onClick={handleLogin}&gt;
+            INICIAR SESION
+          &lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/StyledLogin&gt;
+    &lt;/Container&gt;
   );
 };
 &nbsp;
-export default Login;
-&nbsp;</pre></td></tr></table></pre>
+export default Login;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-11-30T19:39:57.079Z
+                at 2023-12-01T15:36:10.541Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
